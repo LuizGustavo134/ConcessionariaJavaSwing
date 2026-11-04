@@ -17,7 +17,6 @@ public class inicio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         BotaoModificar = new javax.swing.JButton();
-        BotaoCadastrar = new javax.swing.JButton();
         BotaoChecar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         BotaoSolicitar1 = new javax.swing.JButton();
@@ -32,9 +31,6 @@ public class inicio extends javax.swing.JFrame {
 
         BotaoModificar.setText("Modificar Solicitação");
         BotaoModificar.addActionListener(this::BotaoModificarActionPerformed);
-
-        BotaoCadastrar.setText("Cadastrar");
-        BotaoCadastrar.addActionListener(this::BotaoCadastrarActionPerformed);
 
         BotaoChecar.setText("Verificar status");
         BotaoChecar.addActionListener(this::BotaoChecarActionPerformed);
@@ -64,15 +60,12 @@ public class inicio extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addGap(286, 286, 286))
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(48, 48, 48)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(BotaoSolicitar1)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(BotaoCadastrar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(BotaoChecar)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(BotaoModificar)))
+                    .addGap(16, 16, 16)
+                    .addComponent(BotaoSolicitar1)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(BotaoChecar)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(BotaoModificar)
                     .addGap(27, 27, 27)))
         );
         layout.setVerticalGroup(
@@ -88,10 +81,8 @@ public class inicio extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoChecar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotaoSolicitar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                    .addComponent(BotaoSolicitar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
                 .addComponent(jLabel4)
                 .addContainerGap(97, Short.MAX_VALUE))
         );
@@ -102,10 +93,6 @@ public class inicio extends javax.swing.JFrame {
     private void BotaoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoModificarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotaoModificarActionPerformed
-
-    private void BotaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarActionPerformed
-    
-    }//GEN-LAST:event_BotaoCadastrarActionPerformed
 
     private void BotaoChecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoChecarActionPerformed
         // TODO add your handling code here:
@@ -143,7 +130,6 @@ public class inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoCadastrar;
     private javax.swing.JButton BotaoChecar;
     private javax.swing.JButton BotaoModificar;
     private javax.swing.JButton BotaoSolicitar1;

@@ -5,7 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import concessionaria.model.Carro;
+import concessionaria.model.Veiculo;
 public class Operations {
     
     // conexão com o Banco 
