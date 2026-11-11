@@ -26,6 +26,7 @@ public class inicio extends javax.swing.JFrame {
         BotaoChecar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         BotaoSolicitar1 = new javax.swing.JButton();
+        botaoFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -47,6 +48,9 @@ public class inicio extends javax.swing.JFrame {
         BotaoSolicitar1.setText("Solicitar serviço");
         BotaoSolicitar1.addActionListener(this::BotaoSolicitar1ActionPerformed);
 
+        botaoFechar.setText("Fechar programa");
+        botaoFechar.addActionListener(this::botaoFecharActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -63,7 +67,7 @@ public class inicio extends javax.swing.JFrame {
                         .addGap(205, 205, 205)
                         .addComponent(jLabel1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -76,9 +80,10 @@ public class inicio extends javax.swing.JFrame {
                             .addComponent(jLabel4)
                             .addComponent(BotaoSolicitar1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BotaoChecar)
-                .addGap(33, 33, 33))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoFechar)
+                    .addComponent(BotaoChecar))
+                .addGap(28, 28, 28))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -98,17 +103,16 @@ public class inicio extends javax.swing.JFrame {
                 .addComponent(BotaoSolicitar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(jLabel4)
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(botaoFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
     private void BotaoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoModificarActionPerformed
-       JOptionPane.showMessageDialog(null,
-            "Bem-vindo ao setor administrativo!",
-            "Acesso ADM",
-            JOptionPane.INFORMATION_MESSAGE);
+     
     }//GEN-LAST:event_BotaoModificarActionPerformed
 
     private void BotaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarActionPerformed
@@ -119,10 +123,10 @@ public class inicio extends javax.swing.JFrame {
     if (aute.isAutorização() == true){
         dispose();
         tela2.setVisible(true);// cadastro
-    }else{
-          
-            aute.Check();
-            dispose();
+    }else if (aute.getTentativas() >= 3){
+        aute.Check();   
+        dispose();
+        System.exit(0);
     }
     }//GEN-LAST:event_BotaoCadastrarActionPerformed
 
@@ -136,6 +140,11 @@ public class inicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_BotaoSolicitar1ActionPerformed
 
+    private void botaoFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFecharActionPerformed
+       dispose();
+       System.exit(0);
+    }//GEN-LAST:event_botaoFecharActionPerformed
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> new inicio().setVisible(true));
        
@@ -146,6 +155,7 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton BotaoChecar;
     private javax.swing.JButton BotaoModificar;
     private javax.swing.JButton BotaoSolicitar1;
+    private javax.swing.JButton botaoFechar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -1,6 +1,4 @@
 package concessionaria.controller;
-
-import concessionaria.model.Maneger;
 import javax.swing.JOptionPane;
 
 //Logica de autenticação
@@ -9,8 +7,8 @@ public class Autenticador {
      private String nomeTemp;
      private String senhaTemp;
      private int tentativas = 0;
-    public void IDForm(){
-        Maneger mane = new Maneger();
+     Operations op = new Operations();
+    public void IDForm(){         
             JOptionPane.showMessageDialog(null,
             "Bem-vindo ao setor administrativo!",
             "Acesso ADM",
@@ -20,30 +18,37 @@ public class Autenticador {
             "Digite seu ID:",
             "Identificação",
             JOptionPane.QUESTION_MESSAGE);
-
+             
+             
             String senhaTemp = JOptionPane.showInputDialog(null,
             "Digite sua senha:",
-            "Autenticação",
+            "Identificação",
             JOptionPane.QUESTION_MESSAGE);
-            if (nomeTemp.equalsIgnoreCase(mane.getNome())&& senhaTemp.equalsIgnoreCase(mane.getSenha())){
-            autorização = true;
+            
+            autorização = op.verificarAcesso(nomeTemp, senhaTemp);
+            if (autorização == true){ 
             nomeTemp = " ";
             senhaTemp = " ";
             }else {
+                 JOptionPane.showMessageDialog(null,
+                "Aviso",
+                "Dados incorretos!",
+            JOptionPane.INFORMATION_MESSAGE);
             autorização = false;
             nomeTemp = " ";
             senhaTemp = " ";
             tentativas += 1;
-            
-            }
-    }
+           
+        }
+    }   
             public void Check(){
+            
             if (tentativas == 3){
                     JOptionPane.showMessageDialog(null,
                     "Limite de tentativas atingido: "+ tentativas,
                     "Alerta",
                     JOptionPane.INFORMATION_MESSAGE);}
-          
+                  
             }
     public boolean isAutorização() {
         return autorização;

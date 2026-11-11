@@ -6,7 +6,8 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import concessionaria.model.Carro;
+import concessionaria.model.*;
+import concessionaria.controller.Autenticador;
 import javax.swing.JOptionPane;
 public class Operations {
     
@@ -73,6 +74,25 @@ public class Operations {
         
         return lista;
     }
+    // verificação de acesso adm
+    public boolean verificarAcesso(String nomeTemp, String senhaTemp) {
+
+    String sql = "SELECT 1 FROM Adms "
+               + "WHERE nome = ? AND senha = ? LIMIT 1";
+
+    try (Connection conn = conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setString(1, nomeTemp);
+            stmt.setString(2, senhaTemp);       
+        try (ResultSet rs = stmt.executeQuery()) {
+            return rs.next();
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
+    }
+}
 
     // ==================== 3. UPDATE ====================
     public boolean atualizar(int id, String newName, int newAge) {
