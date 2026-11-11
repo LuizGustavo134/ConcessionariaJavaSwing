@@ -120,10 +120,7 @@ public class inicio extends javax.swing.JFrame {
         dispose();
         tela2.setVisible(true);// cadastro
     }else{
-           JOptionPane.showMessageDialog(null,
-            "Acesso negado!!!",
-            "Usuario desconhecido!!!",
-            JOptionPane.INFORMATION_MESSAGE);
+          
             aute.Check();
             dispose();
     }

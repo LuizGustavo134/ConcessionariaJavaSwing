@@ -1,16 +1,18 @@
-import java.sql.Connection;
+package concessionaria.controller;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import concessionaria.model.Carro;
+import javax.swing.JOptionPane;
 public class Operations {
     
     // conexão com o Banco 
-    private static final String URL = "jdbc:mysql://localhost:3306/your_database";
-    private static final String USERNAME = "your_username";
+    private static final String URL = "jdbc:mysql://localhost:3306/concessionaria";
+    private static final String USERNAME = "root";
     private static final String PASSWORD = "";
     // Método auxiliar para abrir a conexão
     private Connection conectar() throws SQLException {
@@ -23,23 +25,29 @@ public class Operations {
     }
 
     // ==================== 1. CREATE (INSERT) ====================
-    public boolean inserir(String name, int age) {
-        String sql = "INSERT INTO users (name, age) VALUES (?, ?)";
+   public boolean inserir(Carro novoCarro) {
+
+    String sql = "INSERT INTO carros (marca,ano,preco,quantidade) VALUES (?, ?, ?, ?)";
+
+    try (Connection conn = conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
         
-        try (Connection conn = conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-            
-            stmt.setString(1, name);
-            stmt.setInt(2, age);
-            
-            int rows = stmt.executeUpdate();
-            return rows > 0;
-            
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        }
+        stmt.setString(1, novoCarro.getMarca());
+        stmt.setInt(2, novoCarro.getAno());
+        stmt.setDouble(3, novoCarro.getPreco());
+        stmt.setInt(4,novoCarro.getQuantidade());
+        JOptionPane.showMessageDialog(null,
+            "Operação bem sucedida",
+            "Dados enviados com sucesso",
+            JOptionPane.INFORMATION_MESSAGE);
+        return stmt.executeUpdate() > 0;
+       
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+        return false;
     }
+}
 
     // ==================== 2. READ (SELECT) ====================
     // Retorna uma lista de arrays de String, ideal para popular JTables no Swing

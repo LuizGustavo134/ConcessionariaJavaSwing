@@ -1,17 +1,19 @@
 package concessionaria.model;
 public class Carro {
    private int id;
-   private String nome; 
    private String marca;
-   private double preco;
    private int ano;
+   private double preco;
+   private int quantidade;
 
-    public Carro(int id, String nome, String marca, double preco, int ano) {
-        this.id = id;
-        this.nome = nome;
+    public Carro() {
+    }
+
+    public Carro(String marca, int ano, double preco, int quantidade) {
         this.marca = marca;
-        this.preco = preco;
         this.ano = ano;
+        this.preco = preco;
+        this.quantidade = quantidade;
     }
 
     public int getId() {
@@ -22,20 +24,20 @@ public class Carro {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
     public String getMarca() {
         return marca;
     }
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 
     public double getPreco() {
@@ -46,12 +48,18 @@ public class Carro {
         this.preco = preco;
     }
 
-    public int getAno() {
-        return ano;
+    public int getQuantidade() {
+        return quantidade;
     }
 
-    public void setAno(int ano) {
-        this.ano = ano;
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Carro{" + "id=" + id + ", marca=" + marca + ", ano=" + ano + ", preco=" + preco + ", quantidade=" + quantidade + '}';
     }
    
+
 }
