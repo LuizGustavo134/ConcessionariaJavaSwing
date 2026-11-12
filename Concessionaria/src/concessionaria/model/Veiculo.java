@@ -1,15 +1,20 @@
 package concessionaria.model;
-public class Carro {
+public class Veiculo {
    private int id;
    private String marca;
    private int ano;
    private double preco;
    private int quantidade;
 
-    public Carro() {
+    public Veiculo() {
     }
 
-    public Carro(String marca, int ano, double preco, int quantidade) {
+    public Veiculo(String marca, int ano) {  //contrutor para tela solicitação
+        this.marca = marca;
+        this.ano = ano;
+    }
+    
+    public Veiculo(String marca, int ano, double preco, int quantidade) {
         this.marca = marca;
         this.ano = ano;
         this.preco = preco;

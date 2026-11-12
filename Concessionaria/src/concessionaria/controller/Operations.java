@@ -28,12 +28,12 @@ public class Operations {
     // ==================== 1. CREATE (INSERT) ====================
    public boolean inserir(Carro novoCarro) {
 
-    String sql = "INSERT INTO carros (marca,ano,preco,quantidade) VALUES (?, ?, ?, ?)";
+    String sql = "INSERT INTO OrdemServico (nome,contato) VALUES (?, ?,)";
 
     try (Connection conn = conectar();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
         
-        stmt.setString(1, novoCarro.getMarca());
+        stmt.setString(1, novoCliente.getNome,);
         stmt.setInt(2, novoCarro.getAno());
         stmt.setDouble(3, novoCarro.getPreco());
         stmt.setInt(4,novoCarro.getQuantidade());
@@ -74,7 +74,7 @@ public class Operations {
         
         return lista;
     }
-    // verificação de acesso adm
+    /* querie que verifica e compara dados no banco
     public boolean verificarAcesso(String nomeTemp, String senhaTemp) {
 
     String sql = "SELECT 1 FROM Adms "
@@ -92,7 +92,7 @@ public class Operations {
         e.printStackTrace();
         return false;
     }
-}
+}*/
 
     // ==================== 3. UPDATE ====================
     public boolean atualizar(int id, String newName, int newAge) {

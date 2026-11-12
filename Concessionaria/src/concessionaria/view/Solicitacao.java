@@ -1,4 +1,7 @@
 package concessionaria.view;
+
+import concessionaria.model.cliente;
+
 /* tela de cadastro Insert 
     °em desenvolvimento */
 public class Solicitacao extends javax.swing.JFrame {
@@ -28,7 +31,7 @@ public class Solicitacao extends javax.swing.JFrame {
         userContato = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        botaoCadastrar = new javax.swing.JButton();
+        botaoEnviar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         ListaDeServicos1 = new javax.swing.JList<>();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -72,8 +75,8 @@ public class Solicitacao extends javax.swing.JFrame {
 
         jLabel7.setText(" a respeito do horário");
 
-        botaoCadastrar.setText("Enviar");
-        botaoCadastrar.addActionListener(this::botaoCadastrarActionPerformed);
+        botaoEnviar.setText("Enviar");
+        botaoEnviar.addActionListener(this::botaoEnviarActionPerformed);
 
         ListaDeServicos1.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "revisão", "pintura", "polimento","troca de Pneus","Lavagem estética","outro"};
@@ -100,9 +103,9 @@ public class Solicitacao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(50, 50, 50)
-                        .addComponent(botaoCadastrar)
+                        .addComponent(botaoEnviar)
                         .addGap(73, 73, 73)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,9 +115,9 @@ public class Solicitacao extends javax.swing.JFrame {
                                 .addComponent(jLabel7)))))
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(userNome, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
@@ -123,9 +126,8 @@ public class Solicitacao extends javax.swing.JFrame {
                             .addComponent(userContato, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(19, 19, 19))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -143,22 +145,19 @@ public class Solicitacao extends javax.swing.JFrame {
                         .addComponent(marcaVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Veiculo5, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(Veiculo5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(123, 123, 123))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(anoVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Veiculo4, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(anoVeiculo, javax.swing.GroupLayout.DEFAULT_SIZE, 140, Short.MAX_VALUE)
+                            .addComponent(Veiculo4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 217, Short.MAX_VALUE)
                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 218, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,9 +184,7 @@ public class Solicitacao extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(anoVeiculo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(userContato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                    .addComponent(userContato, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(Veiculo5)
@@ -209,7 +206,7 @@ public class Solicitacao extends javax.swing.JFrame {
                         .addComponent(jLabel6)
                         .addGap(12, 12, 12)
                         .addComponent(jLabel7))
-                    .addComponent(botaoCadastrar))
+                    .addComponent(botaoEnviar))
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -237,12 +234,14 @@ public class Solicitacao extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_userContatoActionPerformed
 
-    private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
-        dispose();
-        inicio telaInicio = new inicio();
-        telaInicio.setVisible(true);
+    private void botaoEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEnviarActionPerformed
+       String usuarioNome = userNome.getText();
+       String usurarioContato = userContato.getText();
+       cliente novoCliente = new  cliente(usuarioNome, usurarioContato);
+       
+       
                  
-    }//GEN-LAST:event_botaoCadastrarActionPerformed
+    }//GEN-LAST:event_botaoEnviarActionPerformed
 
     private void ListaDeServicos1ValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListaDeServicos1ValueChanged
         // TODO add your handling code here:
@@ -263,7 +262,7 @@ public class Solicitacao extends javax.swing.JFrame {
     private javax.swing.JLabel Veiculo4;
     private javax.swing.JLabel Veiculo5;
     private javax.swing.JTextField anoVeiculo;
-    private javax.swing.JButton botaoCadastrar;
+    private javax.swing.JButton botaoEnviar;
     private javax.swing.Box.Filler filler1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

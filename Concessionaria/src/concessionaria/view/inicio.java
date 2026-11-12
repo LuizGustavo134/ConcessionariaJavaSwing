@@ -10,6 +10,7 @@ public class inicio extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(inicio.class.getName());
      Autenticador aute = new Autenticador();
      telaCadastro tela2 = new telaCadastro();
+     
     public inicio() {
         initComponents();
     }
@@ -25,7 +26,6 @@ public class inicio extends javax.swing.JFrame {
         BotaoCadastrar = new javax.swing.JButton();
         BotaoChecar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        BotaoSolicitar1 = new javax.swing.JButton();
         botaoFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -36,17 +36,14 @@ public class inicio extends javax.swing.JFrame {
 
         jLabel3.setText("Auto prime Mecânicas & vendas");
 
-        BotaoModificar.setText("Modificar Solicitação");
+        BotaoModificar.setText("Alterar serviço");
         BotaoModificar.addActionListener(this::BotaoModificarActionPerformed);
 
-        BotaoCadastrar.setText("Cadastrar");
+        BotaoCadastrar.setText("Pedir serviço");
         BotaoCadastrar.addActionListener(this::BotaoCadastrarActionPerformed);
 
         BotaoChecar.setText("Verificar status");
         BotaoChecar.addActionListener(this::BotaoChecarActionPerformed);
-
-        BotaoSolicitar1.setText("Solicitar serviço");
-        BotaoSolicitar1.addActionListener(this::BotaoSolicitar1ActionPerformed);
 
         botaoFechar.setText("Fechar programa");
         botaoFechar.addActionListener(this::botaoFecharActionPerformed);
@@ -58,32 +55,33 @@ public class inicio extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(148, 148, 148)
-                        .addComponent(jLabel3))
+                        .addGap(21, 21, 21)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BotaoCadastrar)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(jLabel4))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(BotaoModificar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(BotaoChecar))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(botaoFechar)
+                                .addGap(119, 119, 119))))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BotaoCadastrar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BotaoModificar)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(BotaoSolicitar1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(botaoFechar)
-                    .addComponent(BotaoChecar))
-                .addGap(28, 28, 28))
+                            .addComponent(jLabel3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(jLabel1)))))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -99,13 +97,11 @@ public class inicio extends javax.swing.JFrame {
                     .addComponent(BotaoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoChecar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotaoSolicitar1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(12, 12, 12)
+                .addGap(64, 64, 64)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addComponent(botaoFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18))
+                .addGap(19, 19, 19))
         );
 
         pack();
@@ -116,10 +112,8 @@ public class inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoModificarActionPerformed
 
     private void BotaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarActionPerformed
-    //esse botão aciona o metodo de validação de usuario
-    aute.IDForm(); // questionario
-    
-    //logica
+        aute.IDForm();
+        //logica
     if (aute.isAutorização() == true){
         dispose();
         tela2.setVisible(true);// cadastro
@@ -133,12 +127,6 @@ public class inicio extends javax.swing.JFrame {
     private void BotaoChecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoChecarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_BotaoChecarActionPerformed
-
-    private void BotaoSolicitar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSolicitar1ActionPerformed
-        dispose();
-        sol.setVisible(true);
-        
-    }//GEN-LAST:event_BotaoSolicitar1ActionPerformed
 
     private void botaoFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFecharActionPerformed
        dispose();
@@ -154,7 +142,6 @@ public class inicio extends javax.swing.JFrame {
     private javax.swing.JButton BotaoCadastrar;
     private javax.swing.JButton BotaoChecar;
     private javax.swing.JButton BotaoModificar;
-    private javax.swing.JButton BotaoSolicitar1;
     private javax.swing.JButton botaoFechar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

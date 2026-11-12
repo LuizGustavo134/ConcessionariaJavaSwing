@@ -1,7 +1,7 @@
 package concessionaria.view;
 
 import javax.swing.JOptionPane;
-import concessionaria.model.Carro;
+import concessionaria.model.*;
 import concessionaria.controller.*;
 /* tela de cadastro Insert */
 public class telaCadastro extends javax.swing.JFrame {
@@ -13,7 +13,6 @@ public class telaCadastro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        preco = new javax.swing.JTextField();
         Veiculo = new javax.swing.JLabel();
         marca = new javax.swing.JTextField();
         filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 1), new java.awt.Dimension(0, 1), new java.awt.Dimension(32767, 1));
@@ -23,13 +22,14 @@ public class telaCadastro extends javax.swing.JFrame {
         Veiculo4 = new javax.swing.JLabel();
         botaoEnviar = new javax.swing.JButton();
         Ano = new javax.swing.JTextField();
-        Quantidade = new javax.swing.JTextField();
         Veiculo5 = new javax.swing.JLabel();
         botaoVoltar = new javax.swing.JButton();
+        ListaPagamento = new javax.swing.JScrollPane();
+        jList1 = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listaServico = new javax.swing.JList<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        preco.addActionListener(this::precoActionPerformed);
 
         Veiculo.setText("    Cadastro de veiculos");
 
@@ -39,19 +39,31 @@ public class telaCadastro extends javax.swing.JFrame {
 
         Veiculo3.setText("      Ano:");
 
-        Veiculo4.setText("   valor de venda");
+        Veiculo4.setText("Serviço:");
 
         botaoEnviar.setText("Enviar");
         botaoEnviar.addActionListener(this::botaoEnviarActionPerformed);
 
         Ano.addActionListener(this::AnoActionPerformed);
 
-        Quantidade.addActionListener(this::QuantidadeActionPerformed);
-
-        Veiculo5.setText("    Quantidade");
+        Veiculo5.setText("Pagamento");
 
         botaoVoltar.setText("Voltar");
         botaoVoltar.addActionListener(this::botaoVoltarActionPerformed);
+
+        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Dinheiro", "Pix", "Cartão", "Crédito", };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        ListaPagamento.setViewportView(jList1);
+
+        listaServico.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Pintura", "Polimento", "Avaliação completa", "troca de oleo", "Motor" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(listaServico);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,67 +72,72 @@ public class telaCadastro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(125, 125, 125)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Veiculo)
-                            .addComponent(Veiculo2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(101, 101, 101))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(23, 23, 23)
-                                .addComponent(Veiculo4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(preco, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Ano, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(179, 179, 179)
+                                .addComponent(Veiculo4))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(37, 37, 37)
+                                .addGap(129, 129, 129)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ListaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(Veiculo5)
+                                        .addGap(59, 59, 59))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(33, 33, 33)
+                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(botaoVoltar)
+                                                    .addComponent(botaoEnviar)))
+                                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(Ano, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Veiculo1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(163, 163, 163)
                                 .addComponent(Veiculo3, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(19, 19, 19)
-                                .addComponent(Veiculo5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(botaoVoltar)
-                                    .addComponent(botaoEnviar))))
-                        .addGap(92, 92, 92)))
-                .addComponent(Veiculo1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(48, 48, 48))
+                                .addGap(141, 141, 141)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(Veiculo)
+                                    .addComponent(Veiculo2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addGap(53, 53, 53))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 197, Short.MAX_VALUE)
+                    .addGap(0, 220, Short.MAX_VALUE)
                     .addComponent(filler1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 198, Short.MAX_VALUE)))
+                    .addGap(0, 220, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Veiculo1)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addContainerGap(24, Short.MAX_VALUE)
                 .addComponent(Veiculo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Veiculo2)
                 .addGap(18, 18, 18)
                 .addComponent(marca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(Veiculo3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Veiculo3)
+                .addGap(18, 18, 18)
                 .addComponent(Ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Veiculo4, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Veiculo1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Veiculo5, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Quantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(11, 11, 11)
+                .addComponent(ListaPagamento, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
                 .addComponent(botaoEnviar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botaoVoltar)
@@ -135,39 +152,33 @@ public class telaCadastro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     
-    private void precoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_precoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_precoActionPerformed
-
     private void marcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_marcaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_marcaActionPerformed
 
     private void botaoEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEnviarActionPerformed
-        if (marca.getText().isEmpty()|| Ano.getText().isEmpty()|| preco.getText().isEmpty()||Quantidade.getText().isEmpty()){
+
+        String marcaTemp = marca.getText();
+        int anoTemp = Integer.parseInt(Ano.getText());
+        double campoServico = Double.parseDouble(listaServico.getToolTipText());
+        String pagTemp = ListaPagamento.getToolTipText(); 
+        
+        if (marca.getText().isEmpty()|| Ano.getText().isEmpty()){
             JOptionPane.showMessageDialog(null,
             "Aviso!!!",
             "Preencha todos os dados!!!",
             JOptionPane.INFORMATION_MESSAGE);
     }else{     
-        String marcaTemp = marca.getText();
-        int anoTemp = Integer.parseInt(Ano.getText());
-        double campoPreco = Double.parseDouble(preco.getText());
-        int quanTemp = Integer.parseInt(Quantidade.getText()); 
-       
-        Carro novoCarro = new Carro(marcaTemp,anoTemp,campoPreco,quanTemp);
+        Veiculo novoCarro = new Veiculo(marcaTemp,anoTemp); //objeto2
+        OrdemdeServico novoServico = new OrdemdeServico(pagTemp);// objeto 3
         Operations op = new Operations();
-        op.inserir(novoCarro);
+        
                 }
     }//GEN-LAST:event_botaoEnviarActionPerformed
 
     private void AnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_AnoActionPerformed
-
-    private void QuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuantidadeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_QuantidadeActionPerformed
 
     private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
         dispose();
@@ -181,7 +192,7 @@ public class telaCadastro extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Ano;
-    private javax.swing.JTextField Quantidade;
+    private javax.swing.JScrollPane ListaPagamento;
     private javax.swing.JLabel Veiculo;
     private javax.swing.JLabel Veiculo1;
     private javax.swing.JLabel Veiculo2;
@@ -191,7 +202,9 @@ public class telaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton botaoEnviar;
     private javax.swing.JButton botaoVoltar;
     private javax.swing.Box.Filler filler1;
+    private javax.swing.JList<String> jList1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> listaServico;
     private javax.swing.JTextField marca;
-    private javax.swing.JTextField preco;
     // End of variables declaration//GEN-END:variables
 }
