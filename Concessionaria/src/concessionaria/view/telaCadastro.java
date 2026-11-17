@@ -25,7 +25,7 @@ public class telaCadastro extends javax.swing.JFrame {
         Veiculo5 = new javax.swing.JLabel();
         botaoVoltar = new javax.swing.JButton();
         ListaPagamento = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        listaPagamento = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaServico = new javax.swing.JList<>();
 
@@ -51,12 +51,12 @@ public class telaCadastro extends javax.swing.JFrame {
         botaoVoltar.setText("Voltar");
         botaoVoltar.addActionListener(this::botaoVoltarActionPerformed);
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
+        listaPagamento.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Dinheiro", "Pix", "Cartão", "Crédito", };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        ListaPagamento.setViewportView(jList1);
+        ListaPagamento.setViewportView(listaPagamento);
 
         listaServico.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Pintura", "Polimento", "Avaliação completa", "troca de oleo", "Motor" };
@@ -157,21 +157,39 @@ public class telaCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_marcaActionPerformed
 
     private void botaoEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEnviarActionPerformed
-
+        JOptionPane.showMessageDialog(null,
+            "Obrigado por escolher nossos serviços!",
+            "Bem-vindo a concessionária auto prime!",
+            JOptionPane.INFORMATION_MESSAGE);
+            
+             String userNome = JOptionPane.showInputDialog(null,
+            "Informe seu nome:",
+            "Olá",
+            JOptionPane.QUESTION_MESSAGE);
+               
+            String userContato = JOptionPane.showInputDialog(null,
+            "informe seu meio de contato:",
+            "Olá",
+            JOptionPane.QUESTION_MESSAGE);
+            cliente novoCliente = new cliente(userNome, userContato);
+            
         String marcaTemp = marca.getText();
         int anoTemp = Integer.parseInt(Ano.getText());
-        double campoServico = Double.parseDouble(listaServico.getToolTipText());
-        String pagTemp = ListaPagamento.getToolTipText(); 
+        String tipoServico = listaServico.getSelectedValue();
+        String pagTemp = listaPagamento.getSelectedValue(); 
         
-        if (marca.getText().isEmpty()|| Ano.getText().isEmpty()){
+        if (marca.getText().isEmpty()|| Ano.getText().isEmpty()
+                || userNome.isEmpty()|| userContato.isEmpty()){
             JOptionPane.showMessageDialog(null,
             "Aviso!!!",
             "Preencha todos os dados!!!",
             JOptionPane.INFORMATION_MESSAGE);
     }else{     
-        Veiculo novoCarro = new Veiculo(marcaTemp,anoTemp); //objeto2
-        OrdemdeServico novoServico = new OrdemdeServico(pagTemp);// objeto 3
-        Operations op = new Operations();
+        UserOps auth = new UserOps();
+ 
+        Veiculo novoVeiculo = new Veiculo(marcaTemp,anoTemp); //objeto2
+        OrdemdeServico novoServico = new OrdemdeServico(tipoServico,pagTemp);// objeto 3
+         auth.Registrar(novoCliente, novoVeiculo, novoServico);
         
                 }
     }//GEN-LAST:event_botaoEnviarActionPerformed
@@ -202,8 +220,8 @@ public class telaCadastro extends javax.swing.JFrame {
     private javax.swing.JButton botaoEnviar;
     private javax.swing.JButton botaoVoltar;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JList<String> jList1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JList<String> listaPagamento;
     private javax.swing.JList<String> listaServico;
     private javax.swing.JTextField marca;
     // End of variables declaration//GEN-END:variables

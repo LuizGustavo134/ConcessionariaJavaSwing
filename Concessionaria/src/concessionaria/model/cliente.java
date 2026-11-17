@@ -44,6 +44,12 @@ public class cliente {
         this.Contato = Contato;
     }
 
+    @Override
+    public String toString() {
+        return "cliente{" + "id: " + id + ", nome: " + nome + ", Contato: " + Contato + '}';
+    }
+
+    
    
     
 }

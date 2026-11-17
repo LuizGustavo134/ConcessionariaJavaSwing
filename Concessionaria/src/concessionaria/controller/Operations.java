@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import concessionaria.model.*;
-import concessionaria.controller.Autenticador;
-import javax.swing.JOptionPane;
 public class Operations {
     
     // conexão com o Banco 
@@ -24,26 +22,77 @@ public class Operations {
         }
         return DriverManager.getConnection(URL, USERNAME, PASSWORD);
     }
+    
+   // ==================== 1. CREATE (INSERT) ====================
+  public int inserirCliente(cliente novoCliente) {
 
-    // ==================== 1. CREATE (INSERT) ====================
-   public boolean inserir(Carro novoCarro) {
+    String sql = "INSERT INTO cliente (nome, contato) VALUES (?, ?)";
 
-    String sql = "INSERT INTO OrdemServico (nome,contato) VALUES (?, ?,)";
+    try (Connection conn = conectar();
+         PreparedStatement stmt = conn.prepareStatement(
+                 sql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
 
+        stmt.setString(1, novoCliente.getNome());
+        stmt.setString(2, novoCliente.getContato());
+
+        int linhas = stmt.executeUpdate();
+
+        if (linhas > 0) {
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return -1;
+}
+   public int inserirVeiculo(Veiculo novoVeiculo) {
+
+    String sql = "INSERT INTO veiculo (marca, ano) VALUES (?, ?)";
+
+    try (Connection conn = conectar();
+         PreparedStatement stmt = conn.prepareStatement(
+                 sql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
+
+        stmt.setString(1, novoVeiculo.getMarca());
+        stmt.setInt(2, novoVeiculo.getAno());
+
+        int linhas = stmt.executeUpdate();
+
+        if (linhas > 0) {
+            try (ResultSet rs = stmt.getGeneratedKeys()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return -1;
+}
+   
+   public boolean inserirServico(OrdemdeServico novoServico) {
+
+    String sql = "INSERT INTO ordemServico "
+           + "(servico, pagamento, cliente_id, veiculo_id) "
+           + "VALUES (?, ?, ?, ?)";    
     try (Connection conn = conectar();
          PreparedStatement stmt = conn.prepareStatement(sql)) {
         
-        stmt.setString(1, novoCliente.getNome,);
-        stmt.setInt(2, novoCarro.getAno());
-        stmt.setDouble(3, novoCarro.getPreco());
-        stmt.setInt(4,novoCarro.getQuantidade());
-        JOptionPane.showMessageDialog(null,
-            "Operação bem sucedida",
-            "Dados enviados com sucesso",
-            JOptionPane.INFORMATION_MESSAGE);
-        return stmt.executeUpdate() > 0;
-       
-
+        stmt.setString(1, novoServico.getServico());
+        stmt.setString(2, novoServico.getPagamento());
+        stmt.setInt(3, novoServico.getCliente_id());
+        stmt.setInt(4, novoServico.getVeiculo_id());
+        
+        return stmt.executeUpdate() > 0;     
     } catch (SQLException e) {
         e.printStackTrace();
         return false;
@@ -74,25 +123,9 @@ public class Operations {
         
         return lista;
     }
-    /* querie que verifica e compara dados no banco
-    public boolean verificarAcesso(String nomeTemp, String senhaTemp) {
+   
+   
 
-    String sql = "SELECT 1 FROM Adms "
-               + "WHERE nome = ? AND senha = ? LIMIT 1";
-
-    try (Connection conn = conectar();
-         PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setString(1, nomeTemp);
-            stmt.setString(2, senhaTemp);       
-        try (ResultSet rs = stmt.executeQuery()) {
-            return rs.next();
-        }
-
-    } catch (SQLException e) {
-        e.printStackTrace();
-        return false;
-    }
-}*/
 
     // ==================== 3. UPDATE ====================
     public boolean atualizar(int id, String newName, int newAge) {

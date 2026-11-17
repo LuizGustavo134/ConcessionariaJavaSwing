@@ -1,5 +1,5 @@
 package concessionaria.view;
-import concessionaria.controller.Autenticador;
+import concessionaria.controller.UserOps;
 import concessionaria.model.*;
 import javax.swing.JOptionPane;
 
@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 public class inicio extends javax.swing.JFrame {
     Solicitacao sol = new Solicitacao();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(inicio.class.getName());
-     Autenticador aute = new Autenticador();
+     UserOps aute = new UserOps();
      telaCadastro tela2 = new telaCadastro();
      
     public inicio() {
@@ -23,7 +23,7 @@ public class inicio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         BotaoModificar = new javax.swing.JButton();
-        BotaoCadastrar = new javax.swing.JButton();
+        BotaoPedir = new javax.swing.JButton();
         BotaoChecar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         botaoFechar = new javax.swing.JButton();
@@ -39,8 +39,8 @@ public class inicio extends javax.swing.JFrame {
         BotaoModificar.setText("Alterar serviço");
         BotaoModificar.addActionListener(this::BotaoModificarActionPerformed);
 
-        BotaoCadastrar.setText("Pedir serviço");
-        BotaoCadastrar.addActionListener(this::BotaoCadastrarActionPerformed);
+        BotaoPedir.setText("Pedir serviço");
+        BotaoPedir.addActionListener(this::BotaoPedirActionPerformed);
 
         BotaoChecar.setText("Verificar status");
         BotaoChecar.addActionListener(this::BotaoChecarActionPerformed);
@@ -58,7 +58,7 @@ public class inicio extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(BotaoCadastrar)
+                                .addComponent(BotaoPedir)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(22, 22, 22)
@@ -95,7 +95,7 @@ public class inicio extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BotaoModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BotaoCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BotaoPedir, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoChecar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
                 .addComponent(jLabel4)
@@ -111,18 +111,10 @@ public class inicio extends javax.swing.JFrame {
      
     }//GEN-LAST:event_BotaoModificarActionPerformed
 
-    private void BotaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoCadastrarActionPerformed
-        aute.IDForm();
-        //logica
-    if (aute.isAutorização() == true){
+    private void BotaoPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoPedirActionPerformed
         dispose();
         tela2.setVisible(true);// cadastro
-    }else if (aute.getTentativas() >= 3){
-        aute.Check();   
-        dispose();
-        System.exit(0);
-    }
-    }//GEN-LAST:event_BotaoCadastrarActionPerformed
+    }//GEN-LAST:event_BotaoPedirActionPerformed
 
     private void BotaoChecarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoChecarActionPerformed
         // TODO add your handling code here:
@@ -139,9 +131,9 @@ public class inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton BotaoCadastrar;
     private javax.swing.JButton BotaoChecar;
     private javax.swing.JButton BotaoModificar;
+    private javax.swing.JButton BotaoPedir;
     private javax.swing.JButton botaoFechar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
