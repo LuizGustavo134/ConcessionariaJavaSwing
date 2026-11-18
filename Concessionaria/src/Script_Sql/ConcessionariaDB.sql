@@ -7,7 +7,7 @@ use concessionaria;
     contato varchar(100)
     );
     
-    select*from cliente,veiculo,ordemServico;
+   select* from cliente;
     
     SELECT
     os.codigo_deServico,
@@ -49,7 +49,7 @@ INNER JOIN veiculo v
     
     select*from veiculo;
 	select*from carros where ano < 2000 and preco < 5000;
-    
+/***********************************************************************************
     create table Adms(
     id int auto_increment primary key,
     nome varchar (50),
@@ -59,4 +59,4 @@ INNER JOIN veiculo v
     insert into Adms values(null,"jose","Adm123");
     select* from Adms;
     select* from Adms where nome = "jose" and senha = "Adm123";
-    
+    */

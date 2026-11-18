@@ -6,7 +6,6 @@ import javax.swing.JOptionPane;
 /*Essa classe é o gerenciador de telas 
 É por aqui que o fluxo vai ser organizado*/
 public class inicio extends javax.swing.JFrame {
-    Solicitacao sol = new Solicitacao();
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(inicio.class.getName());
      UserOps aute = new UserOps();
      telaCadastro tela2 = new telaCadastro();
@@ -108,7 +107,8 @@ public class inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
     
     private void BotaoModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoModificarActionPerformed
-     
+        TelaUpdate telaUp = new TelaUpdate();
+        telaUp.setVisible(true);
     }//GEN-LAST:event_BotaoModificarActionPerformed
 
     private void BotaoPedirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoPedirActionPerformed
